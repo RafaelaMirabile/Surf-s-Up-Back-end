@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
-import pointServices from '@/services/point-service'
+import pointServices from '../../services/point-service';
+
 
 export async function listPoints(req:Request, res: Response) {
     try {

@@ -34,7 +34,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import pointRepository from "@/repositories/point-repository";
+import pointRepository from "../../repositories/point-repository";
 function getPoints() {
     return __awaiter(this, void 0, void 0, function () {
         var points;

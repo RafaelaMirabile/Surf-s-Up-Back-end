@@ -34,7 +34,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import pointServices from '@/services/point-service';
+import pointServices from '../../services/point-service';
 export function listPoints(req, res) {
     return __awaiter(this, void 0, void 0, function () {
         var points, error_1;

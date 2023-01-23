@@ -1,4 +1,5 @@
-import pointRepository from "@/repositories/point-repository";
+import pointRepository from "../../repositories/point-repository";
+
 
 async function getPoints() {
 const points = await pointRepository.findPoints();
