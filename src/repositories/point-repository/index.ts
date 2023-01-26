@@ -1,12 +1,22 @@
-import { prisma } from "../../database/database";
+import prisma from "../../database/database.js";
+
 
 
 async function findPoints() {
-    return prisma.point.findMany();
+    return await prisma.point.findMany();
 }
 
-const pointRepository ={
-    findPoints
+async function findReports(pointId: number) {
+    return await prisma.reports.findMany({
+        where: {
+            id: pointId
+        }
+    });
+}
+
+const pointRepository = {
+    findPoints,
+    findReports
 };
 
 export default pointRepository;

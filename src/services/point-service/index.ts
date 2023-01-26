@@ -1,4 +1,4 @@
-import pointRepository from "../../repositories/point-repository";
+import pointRepository from "../../repositories/point-repository/index.js";
 
 
 async function getPoints() {
@@ -9,8 +9,18 @@ if(!points){
 return points;
 }
 
+async function getReport(pointId : number) {
+    const reports = await pointRepository.findReports(pointId);
+    
+    if(!reports){
+        throw Error;
+    }
+    return reports;
+}
+
 const pointServices = {
-    getPoints
+    getPoints,
+    getReport
 };
 
 export default pointServices;

@@ -13,21 +13,18 @@ model point {
   latitude     Decimal        @db.Decimal
   longitude    Decimal        @db.Decimal
   createdAt    DateTime?      @default(now()) @db.Timestamp(6)
-  reports      reports[]      @ignore
+  reports      reports[]
   userFavPoint userFavPoint[]
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model reports {
-  id       Int       @default(autoincrement())
+  id       Int       @id @default(autoincrement())
   userId   Int?
   picoId   Int?
   report   String
   createAt DateTime? @default(now()) @db.Timestamp(6)
   point    point?    @relation(fields: [picoId], references: [id], onDelete: NoAction, onUpdate: NoAction)
   user     user?     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
-
-  @@ignore
 }
 
 model user {
@@ -36,7 +33,7 @@ model user {
   email        String         @unique
   password     String         @unique
   createdAt    DateTime?      @default(now()) @db.Timestamp(6)
-  reports      reports[]      @ignore
+  reports      reports[]
   userFavPoint userFavPoint[]
 }
 
