@@ -1,7 +1,5 @@
 import { Request, Response } from "express";
-import { authService } from "../../services/auth-service/index.js";
 import reportService from "../../services/report-service/index.js";
-
 
 export async function listReport(req: Request, res: Response) {
     const {pointId} = req.params;
@@ -15,11 +13,14 @@ export async function listReport(req: Request, res: Response) {
 };
 
 export async function postReport(req: Request, res: Response) {
-    const {userId, userName, report, stokedLevel} = req.body;  
+    const reportBody = req.body;  
     const {pointId} = req.params;
+    const {user} = res.locals;
+    console.log(req.body);
 
     try {
-       
+        const report = await reportService.pointReport(user.id, Number(pointId), reportBody);
+        console.log(report);
     } catch (error) {
         console.log(error);
         res.sendStatus(500);

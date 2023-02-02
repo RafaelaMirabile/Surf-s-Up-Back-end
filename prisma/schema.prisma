@@ -18,13 +18,15 @@ model point {
 }
 
 model reports {
-  id       Int       @id @default(autoincrement())
-  userId   Int?
-  picoId   Int?
-  report   String
-  createAt DateTime? @default(now()) @db.Timestamp(6)
-  point    point?    @relation(fields: [picoId], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  user     user?     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  id           Int       @id @default(autoincrement())
+  userId       Int?
+  username_    String    @map("“username”")
+  picoId       Int?
+  report       String
+  stokedlevel_ String    @map("“stokedlevel”")
+  createAt     DateTime? @default(now()) @db.Timestamp(6)
+  point        point?    @relation(fields: [picoId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  user         user?     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model user {

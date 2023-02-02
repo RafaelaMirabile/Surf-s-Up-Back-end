@@ -1,4 +1,4 @@
-import reportRepository from "../../repositories/report-repository/index.js";
+import reportRepository, { CreateReportParams } from "../../repositories/report-repository/index.js";
 
 async function getReport(pointId : number) {
     const reports = await reportRepository.findReports(pointId);
@@ -9,8 +9,18 @@ async function getReport(pointId : number) {
     return reports;
 }
 
+async function pointReport(userId : number, pointId: number ,reportBody: CreateReportParams) {
+    const report = await reportRepository.createReport(userId,pointId,reportBody);
+    
+    if(!report){
+        throw Error;
+    }
+    return report;
+}
+
 const reportService ={
-    getReport
+    getReport,
+    pointReport
 }
 
 export default reportService;

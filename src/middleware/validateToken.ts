@@ -14,7 +14,6 @@ export default function validateToken(req: Request, res: Response, next: NextFun
 
     try {
         const verifiedUser = jwt.verify(token, process.env.TOKEN_SECRET);
-        console.log(verifiedUser);
         res.locals.user = verifiedUser;
         next();
     } catch (error) {
