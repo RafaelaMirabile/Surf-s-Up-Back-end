@@ -9,18 +9,8 @@ if(!points){
 return points;
 }
 
-async function getReport(pointId : number) {
-    const reports = await pointRepository.findReports(pointId);
-    
-    if(!reports){
-        throw Error;
-    }
-    return reports;
-}
-
 const pointServices = {
-    getPoints,
-    getReport
+    getPoints
 };
 
 export default pointServices;
