@@ -16,11 +16,10 @@ export async function postReport(req: Request, res: Response) {
     const reportBody = req.body;  
     const {pointId} = req.params;
     const {user} = res.locals;
-    console.log(req.body);
 
     try {
         const report = await reportService.pointReport(user.id, Number(pointId), reportBody);
-        console.log(report);
+        return res.status(200).send(report);
     } catch (error) {
         console.log(error);
         res.sendStatus(500);

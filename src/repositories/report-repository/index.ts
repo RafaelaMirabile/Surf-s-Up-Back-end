@@ -13,9 +13,9 @@ return await prisma.reports.create({
     data: {
         userId: userId,
         picoId: pointId,
-        userName: reportBody.user_name,
+        username_: reportBody.user_name,
         report: reportBody.report,
-        stokedLevel: reportBody.stoked_level
+        stokedlevel_: reportBody.stoked_level
     }
 })
 }
