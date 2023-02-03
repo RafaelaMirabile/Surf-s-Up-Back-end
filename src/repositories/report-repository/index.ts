@@ -20,6 +20,23 @@ return await prisma.reports.create({
 })
 }
 
+async function userReports(user_Id: number, reportId: number) {
+    return await prisma.reports.findFirst({
+        where:{
+            id: reportId,
+            userId : user_Id
+        }
+    });
+}
+
+async function deleteReportFromDB(reportId : number){
+    return await prisma.reports.delete({
+        where:{
+            id: reportId
+        }
+    })
+}
+
 type Report = {
     id: number,
     userId: number,
@@ -34,7 +51,9 @@ export type CreateReportParams = Omit< Report, "createdAt" | "id">
 
 const reportRepository = {
     findReports,
-    createReport
+    createReport,
+    deleteReportFromDB,
+    userReports
 }
 
 export default reportRepository;

@@ -18,9 +18,33 @@ async function pointReport(userId : number, pointId: number ,reportBody: CreateR
     return report;
 }
 
+async function findReportFromUser(userId : number, reportId: number){
+    const reports = await reportRepository.userReports(userId, reportId);
+
+    if(!reports){
+        console.log('passou por aqui 2')
+        console.log('o report do usuario nao existe');
+        throw Error;
+    }
+    return reports;
+}
+
+async function deleteRequestedReport(userId: number,reportId: number){
+const reportFromUser = await findReportFromUser(userId, reportId);
+console.log('achou o report certo?',reportFromUser);
+const deleteReport = await reportRepository.deleteReportFromDB(reportId);
+
+if(!deleteReport){
+    ('passou aqui 1')
+    throw Error
+}
+return deleteReport;
+}
+
 const reportService ={
     getReport,
-    pointReport
+    pointReport,
+    deleteRequestedReport
 }
 
 export default reportService;
