@@ -10,5 +10,4 @@ reportRouter
 .post("/:pointId",validateToken,postReport)
 .delete("/:reportId",validateToken,deleteReport)
 
-
 export {reportRouter};

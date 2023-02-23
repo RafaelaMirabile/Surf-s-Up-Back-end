@@ -1,8 +1,8 @@
 import reportRepository, { CreateReportParams } from "../../repositories/report-repository/index.js";
 
 async function getReport(pointId : number) {
+    console.log('get4', typeof(pointId));
     const reports = await reportRepository.findReports(pointId);
-    
     if(!reports){
         throw Error;
     }
@@ -22,7 +22,6 @@ async function findReportFromUser(userId : number, reportId: number){
     const reports = await reportRepository.userReports(userId, reportId);
 
     if(!reports){
-        console.log('passou por aqui 2')
         console.log('o report do usuario nao existe');
         throw Error;
     }

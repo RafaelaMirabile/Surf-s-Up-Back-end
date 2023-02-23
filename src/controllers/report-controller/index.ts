@@ -3,6 +3,7 @@ import reportService from "../../services/report-service/index.js";
 
 export async function listReport(req: Request, res: Response) {
     const { pointId } = req.params;
+    console.log('params', req.params);
     try {
         const reports = await reportService.getReport(Number(pointId));
         return res.status(200).send(reports.map(value => value));
