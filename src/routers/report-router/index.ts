@@ -6,8 +6,8 @@ import validateToken from "../../middleware/validateToken.js";
 const reportRouter = Router();
 
 reportRouter
-.get("/:pointId",listReport)
-.post("/:pointId",validateToken,postReport)
-.delete("/:reportId",validateToken,deleteReport)
+.get("/reports/:pointId",listReport)
+.post("/reports/:pointId",validateToken,postReport)
+.delete("/reports/:reportId",validateToken,deleteReport)
 
 export {reportRouter};

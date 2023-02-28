@@ -4,17 +4,18 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { pointRouter } from './routers/point-router/index.js';
 import{authRouter} from './routers/auth-router/index.js';
-import {reportRouter} from './routers/report-router/index.js'
+import {reportRouter} from './routers/report-router/index.js';
+
 
 dotenv.config();
 const server = express();
 server.use(express.json());
 server.use(cors());
 
+
 server.use(pointRouter);
 server.use(authRouter);
 server.use(reportRouter);
-
 
 
 server.listen(process.env.PORT || 4000, () => {

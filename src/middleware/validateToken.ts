@@ -1,8 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 
-dotenv.config();
 
 export default function validateToken(req: Request, res: Response, next: NextFunction) {
     const { authorization } = req.headers;
@@ -20,5 +18,4 @@ export default function validateToken(req: Request, res: Response, next: NextFun
         console.log(error)
         return res.status(401).send("invalid token");
     }
-
 }
